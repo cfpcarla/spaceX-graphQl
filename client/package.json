@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "@apollo/client": "^3.0.0-beta.48",
+    "@apollo/link-context": "^2.0.0-beta.3",
+    "@expo/webpack-config": "^0.12.56",
+    "@react-native-picker/picker": "react-native-picker/picker",
+    "expo": "~40.0.0",
+    "expo-font": "~8.4.0",
+    "graphql": "^15.0.0",
+    "native-base": "^2.15.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
+    "react-native-accordion-view": "^1.1.9",
+    "react-native-web": "~0.13.12"
+  },
+  "devDependencies": {
+    "@babel/core": "~7.9.0"
+  },
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo web",
+    "eject": "expo eject"
+  },
+  "private": true
+}

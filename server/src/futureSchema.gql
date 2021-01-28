@@ -1,0 +1,27 @@
+type Rocket {
+  id: ID!
+  mission: Mission
+  site: Site
+}
+
+type Site {
+  id: ID!
+  name: String
+  latitude: Float
+  longitude: Float
+}
+
+type Mission {
+  id: ID!
+  name: String
+  lauch_date_local: date
+  success: Boolean
+  launchFailureDetails: String
+}
+
+type Query {
+  rockets:[Rocket]
+}
+
+
+ 
