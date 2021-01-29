@@ -12,6 +12,7 @@ class LaunchAPI extends RESTDataSource {
     if(launch.launch_failure_details) {
       launchFailureDetails = launch.launch_failure_details.reason
     }
+    console.log(launch)
     return {
       id: launch.rocket.rocket_id,
       mission: {
@@ -21,7 +22,7 @@ class LaunchAPI extends RESTDataSource {
         launchFailureDetails: launchFailureDetails
       },
       site: {
-        name: launch.lauch_site.site_name
+        name: launch.launch_site.site_name
       }
     }
   };
@@ -65,31 +66,31 @@ class LaunchAPI extends RESTDataSource {
 
   async getAllRockets() {
     //using this while the spaceX api v2 is down
-    return [{
-      id: "1",
-      name: "Falcon1",
-      mission: {
-        name: "launch.mission_name",
-        launchDateLocal: "launch.launch_date_local",
-        landSuccess: false,
-        launchFailureDetails: "launchFailureDetails"
-      },
-      site: {
-        name: "launch.lauch_site.site_name"
-      }
-    },
-    { id: "2",
-    name: "Falcon2",
-    mission: {
-      name: "launch.mission_name",
-      launchDateLocal: "launch.launch_date_local",
-      landSuccess: true,
-      launchFailureDetails: "too many people watching"
-    },
-    site: {
-      name: "launch.lauch_site.site_name"
-    }}
-  ]
+  //   return [{
+  //     id: "1",
+  //     name: "Falcon1",
+  //     mission: {
+  //       name: "launch.mission_name",
+  //       launchDateLocal: "launch.launch_date_local",
+  //       landSuccess: false,
+  //       launchFailureDetails: "launchFailureDetails"
+  //     },
+  //     site: {
+  //       name: "launch.lauch_site.site_name"
+  //     }
+  //   },
+  //   { id: "2",
+  //   name: "Falcon2",
+  //   mission: {
+  //     name: "launch.mission_name",
+  //     launchDateLocal: "launch.launch_date_local",
+  //     landSuccess: false,
+  //     launchFailureDetails: "launchFailureDetails"
+  //   },
+  //   site: {
+  //     name: "launch.lauch_site.site_name"
+  //   }}
+  // ]
 
 
     const response = await this.get('launches');

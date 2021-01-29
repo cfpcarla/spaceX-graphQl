@@ -6,13 +6,13 @@ import {
   StyleSheet,
   Animated,
   Easing,
- 
+  Image
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 const styles = StyleSheet.create({
     bodyBackground: {
-      backgroundColor: '#EFEFEF',
+      backgroundColor: '#ffe4f2',
       overflow: 'hidden',
     },
     titleContainer: {
@@ -37,7 +37,12 @@ const styles = StyleSheet.create({
       color: 'white',
       fontSize: 'large',
       fontFamily: 'fantasy',
-    }
+    },
+    tinyLogo: {
+      width: 300,
+      height: 130,
+      
+    },
   });
   
 
@@ -77,6 +82,10 @@ const AccordionListItem = ({ title, children }) => {
     <> 
       <TouchableWithoutFeedback onPress={() => toggleListItem()}>
         <View style={styles.titleContainer}>
+        <Image
+        style={styles.tinyLogo}
+        source={require('../assets/images/rocket-2.jpg')}
+      />
           <Text style={styles.text}>{title}</Text> 
           <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }}>
             <MaterialIcons name="keyboard-arrow-down" size={20} color="black" />

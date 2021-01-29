@@ -37,7 +37,7 @@ class TopBar extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Rocket Space X</Text>
+        <Text style={styles.text}>Rocket SpaceX</Text>
         <Image
         style={styles.tinyLogo}
         source={require('../assets/images/rocket.jpg')}

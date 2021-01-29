@@ -29,11 +29,17 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: '5rem',
     justifyContent: 'flex-start',
-    color:"#ffe4f2"
+    color:"#ffe4f2",
   },
   text: {
     color: 'white',
     fontSize: 'xx-large',
+    fontFamily: 'fantasy',
+
+  },
+  text2: {
+    color: 'purple',
+    fontSize: 'large',
     fontFamily: 'fantasy',
 
   }
@@ -55,11 +61,11 @@ function Rockets() {
       {data.rockets.map(eachRocket => (
         
         <AccordionListItem style={styles.text}  title={eachRocket.name} >
-          <Text>Mission Name: {eachRocket.mission.name}{console.log(eachRocket.mission)} </Text>
-         <Text>Launch Date: {eachRocket.mission.launchDateLocal}</Text> 
-         <Text>Land Success: {eachRocket.mission.landSuccess}</Text> 
-         <Text>launch Failure Details: {eachRocket.mission.launchFailureDetails}</Text>
-         <Text>Site name: {eachRocket.site.name}</Text>
+          <Text style={styles.text2} >Mission Name: {eachRocket.mission.name}{console.log(eachRocket.mission)} </Text>
+         <Text style={styles.text2}>Launch Date: {eachRocket.mission.launchDateLocal}</Text> 
+         <Text style={styles.text2}>Land Success: {eachRocket.mission.landSuccess}</Text> 
+         <Text style={styles.text2}>launch Failure Details: {eachRocket.mission.launchFailureDetails}</Text>
+         <Text style={styles.text2}>Site name: {eachRocket.site.name}</Text>
       </AccordionListItem> 
       ))}
     </>
