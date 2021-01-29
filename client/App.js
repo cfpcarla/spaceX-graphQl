@@ -1,11 +1,11 @@
 import { ApolloProvider, useQuery, gql,  } from '@apollo/client';
 import { apolloClient } from './apollo';
 import * as React from 'react';
-import { Text, View, StyleSheet, Image} from 'react-native';
+import { Text, View, StyleSheet, Image, SafeAreaView, FlatList } from 'react-native';
 import AccordionListItem from './components/AccordionListItem';
 import TopBar from './components/TopBar';
 
-//QUERY to get the missions 
+//QUERY to get the rockets 
 const rockets = gql`
 query rockets {
   rockets {
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
   tinyLogo: {
     width: 200,
     height: 200,
+    
   },
 });
 
@@ -54,19 +55,30 @@ function Rockets() {
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
 
+  const accordions = (rocket) => {
+    console.log(rocket)
+    return (
+      <>
+        <AccordionListItem style={styles.text}  title={rocket.item.name} >
+          <Image style={styles.tinyLogo} source={rocket.item.mission.missionPatchSmall}/>
+          <Text style={styles.text2}>Mission Name: {rocket.item.mission.name}{console.log(rocket.item.mission)} </Text>
+          <Text style={styles.text2}>Start Mission: {new Date(rocket.item.mission.launchDateLocal).toString()}</Text> 
+          <Text style={styles.text2}>Mission Success: {rocket.item.mission.launchSuccess ? 'Success' : 'Failure'}</Text> 
+          <Text style={styles.text2}>Mission Failure Details: {rocket.item.mission.launchFailureDetails  ? rocket.item.mission.launchFailureDetails : 'N/A'}</Text>
+          <Text style={styles.text2}>Site name: {rocket.item.site.name}</Text>
+        </AccordionListItem> 
+      </>
+    )
+  }
+  console.log(data.rockets)
   return ( 
-    <>
-      {data.rockets.map(eachRocket => ( 
-        <AccordionListItem style={styles.text}  title={eachRocket.name} >
-        <Image style={styles.tinyLogo} source={eachRocket.mission.missionPatchSmall}/>
-        <Text style={styles.text2}>Mission Name: {eachRocket.mission.name}{console.log(eachRocket.mission)} </Text>
-        <Text style={styles.text2}>Start Mission: {new Date(eachRocket.mission.launchDateLocal).toString()}</Text> 
-        <Text style={styles.text2}>Mission Success: {eachRocket.mission.launchSuccess ? 'Success' : 'Failure'}</Text> 
-        <Text style={styles.text2}>Mission Failure Details: {eachRocket.mission.launchFailureDetails  ? eachRocket.mission.launchFailureDetails : 'N/A'}</Text>
-        <Text style={styles.text2}>Site name: {eachRocket.site.name}</Text>
-      </AccordionListItem> 
-      ))}
-    </>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={data.rockets}
+        renderItem={accordions}
+        keyExtractor={rocket => rocket.id}
+      />
+    </SafeAreaView>
   )
 }
 
@@ -74,8 +86,8 @@ function Rockets() {
 const App = () => {
 return (
   <View style={styles.container}>
-        <View style={styles.statusBar} />
-        <TopBar></TopBar>  
+    <View style={styles.statusBar} />
+    <TopBar></TopBar>  
     <ApolloProvider client={apolloClient}>
       <Rockets />
     </ApolloProvider>

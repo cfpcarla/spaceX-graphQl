@@ -15,9 +15,10 @@
 ### How to run the App
 
 ```
-1. Inside folder front-end and after on the backEnd put in the terminal  `yarn` or npm install.
-2. Run the server: yarn start.
-3. Run on the frontEnd `yarn` or `expo start` to try it out.
+1. Inside client directory run `yarn` or npm install.
+2. Inside server directory run `yarn` or npm install.
+3. Run the server: yarn start.
+4. Run on the client folder `yarn` or `expo start` to try it out.
 ```
 
 
