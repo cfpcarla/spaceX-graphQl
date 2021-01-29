@@ -14,8 +14,6 @@ const styles = StyleSheet.create({
     marginTop: '-80px',
     marginLeft: '0px',
     marginRight: '0px',
-    
-
   },
   tinyLogo: {
     width: 100,
@@ -28,9 +26,7 @@ const styles = StyleSheet.create({
     marginLeft: '118px',
     fontSize: 'xx-large',
     fontFamily: 'fantasy',
-
   }
-
 });
 
 class TopBar extends React.Component {

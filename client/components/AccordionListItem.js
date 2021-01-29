@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Animated,
   Easing,
-  Image
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
@@ -24,8 +23,7 @@ const styles = StyleSheet.create({
       borderTopWidth: 1,
       borderBottomWidth: 1,
       borderColor: 'white',
-      backgroundColor:"#9f45b0",
-      
+      backgroundColor:"#9f45b0",    
     },
     bodyContainer: {
       padding: '1rem',
@@ -41,11 +39,9 @@ const styles = StyleSheet.create({
     },
     tinyLogo: {
       width: 100,
-      height: 90,
-      
+      height: 90,  
     },
-  });
-  
+  }); 
 
 const AccordionListItem = ({ title, children }) => {
   const [open, setOpen] = useState(false);
@@ -98,7 +94,6 @@ const AccordionListItem = ({ title, children }) => {
           {children}
         </View>
       </Animated.View>
-    
     </>
   );
 };

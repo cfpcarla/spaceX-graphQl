@@ -1,4 +1,3 @@
-// import React, { useState } from 'react';
 import { ApolloProvider, useQuery, gql,  } from '@apollo/client';
 import { apolloClient } from './apollo';
 import * as React from 'react';
@@ -26,24 +25,22 @@ query rockets {
 }
 `;
 
+//Style
 const styles = StyleSheet.create({
   container: {
     paddingTop: '5rem',
     justifyContent: 'flex-start',
-    color:"#ffe4f2",
-    
+    color:"#ffe4f2", 
   },
   text: {
     color: 'white',
     fontSize: 'xx-large',
-    fontFamily: 'fantasy',
-
+    fontFamily: 'fantasy'
   },
   text2: {
     color: 'purple',
     fontSize: 'large',
     fontFamily: 'fantasy',
-
   },
   tinyLogo: {
     width: 200,
@@ -58,8 +55,7 @@ function Rockets() {
   if (error) return `Error! ${error.message}`;
   return ( 
     <>
-      {data.rockets.map(eachRocket => (
-        
+      {data.rockets.map(eachRocket => ( 
         <AccordionListItem style={styles.text}  title={eachRocket.id} >
           <Image style={styles.tinyLogo} source={eachRocket.mission.missionPatchSmall}/>
           <Text style={styles.text2} >Mission Name: {eachRocket.mission.name}{console.log(eachRocket.mission)} </Text>
@@ -72,10 +68,9 @@ function Rockets() {
     </>
   )
 }
-    
+
  //APP
 const App = () => {
-
 return (
   <View style={styles.container}>
         <View style={styles.statusBar} />
