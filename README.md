@@ -2,8 +2,7 @@
 
 - Space X is a web / IOS / Android application that displays each SpaceX API rocket and its missions in detail.
 
-
-  <img alt="https://github.com/cfpcarla/spaceX-graphQl/blob/main/initial-page.png"/> 
+![Initial page](https://github.com/cfpcarla/spaceX-graphQl/blob/main/initial-page.png)
 
 
 ## Technologies
@@ -13,11 +12,12 @@
 - SpaceX RestAPI
 
 
-## 🚀 How to use
+### How to run the App
 
-- Install with `yarn` or `npm install`.
-- Run `expo start` to try it out.
-
-
+```
+1. Inside folder front-end and after on the backEnd put in the terminal  `yarn` or npm install.
+2. Run the server: yarn start.
+3. Run on the frontEnd `yarn` or `expo start` to try it out.
+```
 
 
