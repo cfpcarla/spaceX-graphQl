@@ -54,7 +54,7 @@ const typeDefs = gql`
     name: String
     missionPatch(size: PatchSize): String
     launchDateLocal: String
-    landSuccess: Boolean
+    launchSuccess: Boolean
     launchFailureDetails: String
     missionPatchSmall: String
   }

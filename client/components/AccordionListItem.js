@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Animated,
   Easing,
+  ScrollView
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
@@ -85,7 +86,7 @@ const AccordionListItem = ({ title, children }) => {
           </Animated.View>
         </View>
       </TouchableWithoutFeedback>
-      <Animated.View style={[styles.bodyBackground, { height: bodyHeight }]}>
+       <Animated.View style={[styles.bodyBackground, { height: bodyHeight }]}>
         <View
           style={styles.bodyContainer}
           onLayout={event =>
@@ -95,7 +96,7 @@ const AccordionListItem = ({ title, children }) => {
         </View>
       </Animated.View>
     </>
-  );
+    );
 };
 export default AccordionListItem;
 

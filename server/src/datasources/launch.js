@@ -14,10 +14,11 @@ class LaunchAPI extends RESTDataSource {
     }
     return {
       id: launch.rocket.rocket_id,
+      name: launch.rocket.rocket_name,
       mission: {
         name: launch.mission_name,
         launchDateLocal: launch.launch_date_local,
-        landSuccess: launch.land_success,
+        launchSuccess: launch.launch_success,
         launchFailureDetails: launchFailureDetails,
         missionPatchSmall:launch.links.mission_patch_small
       },

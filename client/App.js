@@ -14,7 +14,7 @@ query rockets {
     mission {
       name
       launchDateLocal
-      landSuccess
+      launchSuccess
       launchFailureDetails
       missionPatchSmall
     }
@@ -53,16 +53,17 @@ function Rockets() {
   const { loading, error, data } = useQuery(rockets);
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
+
   return ( 
     <>
       {data.rockets.map(eachRocket => ( 
-        <AccordionListItem style={styles.text}  title={eachRocket.id} >
-          <Image style={styles.tinyLogo} source={eachRocket.mission.missionPatchSmall}/>
-          <Text style={styles.text2} >Mission Name: {eachRocket.mission.name}{console.log(eachRocket.mission)} </Text>
-         <Text style={styles.text2}>Start Mission: {eachRocket.mission.launchDateLocal}</Text> 
-         <Text style={styles.text2}>Mission Success: {eachRocket.mission.landSuccess}</Text> 
-         <Text style={styles.text2}>Mission  Failure Details: {eachRocket.mission.launchFailureDetails}</Text>
-         <Text style={styles.text2}>Site name: {eachRocket.site.name}</Text>
+        <AccordionListItem style={styles.text}  title={eachRocket.name} >
+        <Image style={styles.tinyLogo} source={eachRocket.mission.missionPatchSmall}/>
+        <Text style={styles.text2}>Mission Name: {eachRocket.mission.name}{console.log(eachRocket.mission)} </Text>
+        <Text style={styles.text2}>Start Mission: {new Date(eachRocket.mission.launchDateLocal).toString()}</Text> 
+        <Text style={styles.text2}>Mission Success: {eachRocket.mission.launchSuccess ? 'Success' : 'Failure'}</Text> 
+        <Text style={styles.text2}>Mission Failure Details: {eachRocket.mission.launchFailureDetails  ? eachRocket.mission.launchFailureDetails : 'N/A'}</Text>
+        <Text style={styles.text2}>Site name: {eachRocket.site.name}</Text>
       </AccordionListItem> 
       ))}
     </>
