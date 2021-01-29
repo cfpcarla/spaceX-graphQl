@@ -8,13 +8,20 @@ class LaunchAPI extends RESTDataSource {
 
   // Create a rocket object although it is based on a launch
   rocketReducer(launch) {
+    let launchFailureDetails = null
+    if(launch.launch_failure_details) {
+      launchFailureDetails = launch.launch_failure_details.reason
+    }
     return {
       id: launch.rocket.rocket_id,
       mission: {
         name: launch.mission_name,
         launchDateLocal: launch.launch_date_local,
         landSuccess: launch.land_success,
-        launchFailureDetails: launch.launch_failure_details.reason 
+        launchFailureDetails: launchFailureDetails
+      },
+      site: {
+        name: launch.lauch_site.site_name
       }
     }
   };
@@ -57,6 +64,35 @@ class LaunchAPI extends RESTDataSource {
   }
 
   async getAllRockets() {
+    //using this while the spaceX api v2 is down
+    return [{
+      id: "launch.rocket.rocket_id",
+      name: "Falcon1",
+      mission: {
+        name: "launch.mission_name",
+        launchDateLocal: "launch.launch_date_local",
+        landSuccess: false,
+        launchFailureDetails: "launchFailureDetails"
+      },
+      site: {
+        name: "launch.lauch_site.site_name"
+      }
+    },
+
+    { id: "launch.rocket.rocket_id",
+    name: "Falcon2",
+    mission: {
+      name: "launch.mission_name",
+      launchDateLocal: "launch.launch_date_local",
+      landSuccess: false,
+      launchFailureDetails: "launchFailureDetails"
+    },
+    site: {
+      name: "launch.lauch_site.site_name"
+    }}
+  ]
+
+
     const response = await this.get('launches');
 
     if (Array.isArray(response)) {

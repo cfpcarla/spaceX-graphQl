@@ -2,7 +2,7 @@ import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 // import { setContext } from '@apollo/link-context';
 
 
-const GRAPHQL_API_URL = ' https://docs.spacexdata.com/';
+const GRAPHQL_API_URL = ' http://localhost:4000';
 
 /*
 uncomment the code below in case you are using a GraphQL API that requires some form of

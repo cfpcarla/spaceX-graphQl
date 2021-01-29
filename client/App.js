@@ -11,40 +11,23 @@ import AccordionListItem from './components/AccordionListItem';
 
 
 //QUERIE for get the missions 
-const rocket = gql`
-  query Lauch {
-    rockets{
+const rockets = gql`
+query rockets {
+  rockets {
     id
-    name 
+    name
     mission {
       name
-    lauchDateLocal
-    landSuccess
-    launchFailureDetails   
-   
-    } 
+      lauchDateLocal
+      landSuccess
+      launchFailureDetails
+    }
+    site {
+      name
+    }
   }
-  }
-`;
-
-//Caching query results
-function Rockets({ onRocketSelected }) {
-  const { loading, error, data } = useQuery(rockets);
-
-  if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
-
-  return (
-    <select name="rockets" onChange={onRocketSelected}>
-      {data.mission.map(Mission => (
-        <option key={rockets.id} value={rockets.name}>
-           {lauch.mission_name} {lauch.lauchDateLocal} {lauch.land_success} {lauch.launchFailureDetails}
-        </option>
-      ))}
-    </select>
-  );
 }
-
+`;
 
 const styles = StyleSheet.create({
   container: {
@@ -56,19 +39,32 @@ const styles = StyleSheet.create({
   },
 });
 
-
-
-//APP
+// Caching query results
+function Rockets() {
+  const { loading, error, data } = useQuery(rockets);
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
+  console.log("xunda  ",data.rockets)
+  return ( 
+    <>
+      {data.rockets.map(eachRocket => (
+        <AccordionListItem  title={eachRocket.name} >
+          <Text>{eachRocket.mission.name} {eachRocket.mission.lauchDateLocal} {eachRocket.mission.landSuccess} {eachRocket.mission.launchFailureDetails} {eachRocket.site.name}</Text>
+      </AccordionListItem> 
+      ))}
+    </>
+  )
+}
+    
+ //APP
 const App = () => {
 
-  return (
-      <View style={styles.container}>
-        <ApolloProvider client={apolloClient}>
-        <AccordionListItem  title={'List Item'} >
-          <Text>Some body text!</Text>
-        </AccordionListItem>  
+return (
+  <View style={styles.container}>
+    <ApolloProvider client={apolloClient}>
+      <Rockets />
     </ApolloProvider>
-      </View>
+  </View>
   );
 };
 export default App;
