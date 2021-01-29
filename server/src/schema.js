@@ -41,6 +41,7 @@ const typeDefs = gql`
     type: String
     mission: Mission
     site: Site
+    
   }
 
   type Site {
@@ -55,6 +56,7 @@ const typeDefs = gql`
     launchDateLocal: String
     landSuccess: Boolean
     launchFailureDetails: String
+    missionPatchSmall: String
   }
 
   enum PatchSize {

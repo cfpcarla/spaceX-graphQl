@@ -83,10 +83,10 @@ const AccordionListItem = ({ title, children }) => {
     <> 
       <TouchableWithoutFeedback onPress={() => toggleListItem()}>
         <View style={styles.titleContainer}>
-        <Image
+        {/* <Image
         style={styles.tinyLogo}
         source={require('../assets/images/rocket-2.jpg')}
-      />
+      /> */}
           <Text style={styles.title}>{title}</Text> 
           <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }}>
             <MaterialIcons name="keyboard-arrow-down" size={20} color="#FFE4F2" />

@@ -2,7 +2,7 @@
 import { ApolloProvider, useQuery, gql,  } from '@apollo/client';
 import { apolloClient } from './apollo';
 import * as React from 'react';
-import { Text, View, StyleSheet} from 'react-native';
+import { Text, View, StyleSheet, Image} from 'react-native';
 import AccordionListItem from './components/AccordionListItem';
 import TopBar from './components/TopBar';
 
@@ -17,6 +17,7 @@ query rockets {
       launchDateLocal
       landSuccess
       launchFailureDetails
+      missionPatchSmall
     }
     site {
       name
@@ -43,7 +44,11 @@ const styles = StyleSheet.create({
     fontSize: 'large',
     fontFamily: 'fantasy',
 
-  }
+  },
+  tinyLogo: {
+    width: 200,
+    height: 200,
+  },
 });
 
 // Caching query results
@@ -51,16 +56,16 @@ function Rockets() {
   const { loading, error, data } = useQuery(rockets);
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
-  console.log("xunda  ",data.rockets)
   return ( 
     <>
       {data.rockets.map(eachRocket => (
         
-        <AccordionListItem style={styles.text}  title={eachRocket.name} >
+        <AccordionListItem style={styles.text}  title={eachRocket.id} >
+          <Image style={styles.tinyLogo} source={eachRocket.mission.missionPatchSmall}/>
           <Text style={styles.text2} >Mission Name: {eachRocket.mission.name}{console.log(eachRocket.mission)} </Text>
-         <Text style={styles.text2}>Launch Date: {eachRocket.mission.launchDateLocal}</Text> 
-         <Text style={styles.text2}>Land Success: {eachRocket.mission.landSuccess}</Text> 
-         <Text style={styles.text2}>launch Failure Details: {eachRocket.mission.launchFailureDetails}</Text>
+         <Text style={styles.text2}>Start Mission: {eachRocket.mission.launchDateLocal}</Text> 
+         <Text style={styles.text2}>Mission Success: {eachRocket.mission.landSuccess}</Text> 
+         <Text style={styles.text2}>Mission  Failure Details: {eachRocket.mission.launchFailureDetails}</Text>
          <Text style={styles.text2}>Site name: {eachRocket.site.name}</Text>
       </AccordionListItem> 
       ))}
