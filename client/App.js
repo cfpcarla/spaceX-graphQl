@@ -1,16 +1,13 @@
 // import React, { useState } from 'react';
 import { ApolloProvider, useQuery, gql,  } from '@apollo/client';
 import { apolloClient } from './apollo';
-import { render } from 'react-dom';
-
 import * as React from 'react';
-import { SafeAreaView, Text, View, StyleSheet} from 'react-native';
-import Constants from 'expo-constants';
+import { Text, View, StyleSheet} from 'react-native';
 import AccordionListItem from './components/AccordionListItem';
 // import NavigationBar from 'react-native-navbar';
 
 
-//QUERIE for get the missions 
+//QUERY to get the missions 
 const rockets = gql`
 query rockets {
   rockets {
@@ -18,7 +15,7 @@ query rockets {
     name
     mission {
       name
-      lauchDateLocal
+      launchDateLocal
       landSuccess
       launchFailureDetails
     }
@@ -49,7 +46,11 @@ function Rockets() {
     <>
       {data.rockets.map(eachRocket => (
         <AccordionListItem  title={eachRocket.name} >
-          <Text>{eachRocket.mission.name} {eachRocket.mission.lauchDateLocal} {eachRocket.mission.landSuccess} {eachRocket.mission.launchFailureDetails} {eachRocket.site.name}</Text>
+          <Text>Mission Name: {eachRocket.mission.name}{console.log(eachRocket.mission)} </Text>
+         <Text>Launch Date: {eachRocket.mission.launchDateLocal}</Text> 
+         <Text>Land Success: {eachRocket.mission.landSuccess}</Text> 
+         <Text>launch Failure Details: {eachRocket.mission.launchFailureDetails}</Text>
+         <Text>Site name: {eachRocket.site.name}</Text>
       </AccordionListItem> 
       ))}
     </>

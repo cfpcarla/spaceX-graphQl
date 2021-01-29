@@ -44,15 +44,15 @@ const typeDefs = gql`
   }
 
   type Site {
-  id: ID!
-  name: String
+    id: ID!
+    name: String
 
-}
+  }
 
   type Mission {
     name: String
     missionPatch(size: PatchSize): String
-    lauchDateLocal: String
+    launchDateLocal: String
     landSuccess: Boolean
     launchFailureDetails: String
   }

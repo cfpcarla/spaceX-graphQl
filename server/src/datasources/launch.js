@@ -66,7 +66,7 @@ class LaunchAPI extends RESTDataSource {
   async getAllRockets() {
     //using this while the spaceX api v2 is down
     return [{
-      id: "launch.rocket.rocket_id",
+      id: "1",
       name: "Falcon1",
       mission: {
         name: "launch.mission_name",
@@ -78,14 +78,13 @@ class LaunchAPI extends RESTDataSource {
         name: "launch.lauch_site.site_name"
       }
     },
-
-    { id: "launch.rocket.rocket_id",
+    { id: "2",
     name: "Falcon2",
     mission: {
       name: "launch.mission_name",
       launchDateLocal: "launch.launch_date_local",
-      landSuccess: false,
-      launchFailureDetails: "launchFailureDetails"
+      landSuccess: true,
+      launchFailureDetails: "too many people watching"
     },
     site: {
       name: "launch.lauch_site.site_name"
