@@ -16,16 +16,15 @@ const styles = StyleSheet.create({
       overflow: 'hidden',
     },
     titleContainer: {
-      display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
       padding: '1rem',
       paddingLeft: '1.5rem',
-      borderTopWidth: 1,
+      borderTopWidth: 10,
       borderBottomWidth: 1,
       borderColor: 'white',
-      backgroundColor:"#ffe4f2",
+      backgroundColor:"#9f45b0",
       
     },
     bodyContainer: {
@@ -34,6 +33,11 @@ const styles = StyleSheet.create({
       position: 'absolute',
       bottom: 0,
     },
+    text: {
+      color: 'white',
+      fontSize: 'large',
+      fontFamily: 'fantasy',
+    }
   });
   
 
@@ -70,10 +74,10 @@ const AccordionListItem = ({ title, children }) => {
   };
 
   return (
-    <>               
+    <> 
       <TouchableWithoutFeedback onPress={() => toggleListItem()}>
         <View style={styles.titleContainer}>
-          <Text>{title}</Text>
+          <Text style={styles.text}>{title}</Text> 
           <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }}>
             <MaterialIcons name="keyboard-arrow-down" size={20} color="black" />
           </Animated.View>

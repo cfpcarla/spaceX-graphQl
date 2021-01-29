@@ -4,8 +4,7 @@ import { apolloClient } from './apollo';
 import * as React from 'react';
 import { Text, View, StyleSheet} from 'react-native';
 import AccordionListItem from './components/AccordionListItem';
-// import NavigationBar from 'react-native-navbar';
-
+import TopBar from './components/TopBar';
 
 //QUERY to get the missions 
 const rockets = gql`
@@ -28,12 +27,16 @@ query rockets {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: '2rem',
     paddingTop: '5rem',
     justifyContent: 'flex-start',
     color:"#ffe4f2"
   },
+  text: {
+    color: 'white',
+    fontSize: 'xx-large',
+    fontFamily: 'fantasy',
+
+  }
 });
 
 // Caching query results
@@ -44,8 +47,14 @@ function Rockets() {
   console.log("xunda  ",data.rockets)
   return ( 
     <>
+     <View style={styles.container}>
+        <View style={styles.statusBar} />
+        <TopBar></TopBar>
+        
+      </View>
       {data.rockets.map(eachRocket => (
-        <AccordionListItem  title={eachRocket.name} >
+        
+        <AccordionListItem style={styles.text}  title={eachRocket.name} >
           <Text>Mission Name: {eachRocket.mission.name}{console.log(eachRocket.mission)} </Text>
          <Text>Launch Date: {eachRocket.mission.launchDateLocal}</Text> 
          <Text>Land Success: {eachRocket.mission.landSuccess}</Text> 
