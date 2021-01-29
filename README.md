@@ -2,11 +2,9 @@
 
 - Space X is a web / IOS / Android application that displays each SpaceX API rocket and its missions in detail.
 
-<p>
-  <!-- iOS -->
-  <img alt= ""/>
-  
-</p>
+
+  <img alt="https://github.com/cfpcarla/spaceX-graphQl/blob/main/initial-page.png"/> 
+
 
 ## Technologies
 - React Native
