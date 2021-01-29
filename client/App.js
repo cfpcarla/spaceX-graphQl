@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     paddingTop: '5rem',
     justifyContent: 'flex-start',
     color:"#ffe4f2",
+    
   },
   text: {
     color: 'white',
@@ -53,11 +54,6 @@ function Rockets() {
   console.log("xunda  ",data.rockets)
   return ( 
     <>
-     <View style={styles.container}>
-        <View style={styles.statusBar} />
-        <TopBar></TopBar>
-        
-      </View>
       {data.rockets.map(eachRocket => (
         
         <AccordionListItem style={styles.text}  title={eachRocket.name} >
@@ -77,6 +73,8 @@ const App = () => {
 
 return (
   <View style={styles.container}>
+        <View style={styles.statusBar} />
+        <TopBar></TopBar>  
     <ApolloProvider client={apolloClient}>
       <Rockets />
     </ApolloProvider>

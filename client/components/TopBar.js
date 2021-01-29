@@ -2,18 +2,18 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
+  topBar: {
     alignSelf: 'stretch',
     height: 120,
     flexDirection: 'row', // row
-    backgroundColor: '#44008b',
+    backgroundColor: '#330066',
     alignItems: 'center',
     justifyContent: 'space-between', // center, space-around
     paddingLeft: 10,
     paddingRight: 10,
-    marginTop: '-160px',
+    marginTop: '-80px',
     marginLeft: '0px',
-    marginRight: '-65px',
+    marginRight: '0px',
     
 
   },
@@ -36,11 +36,11 @@ const styles = StyleSheet.create({
 class TopBar extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.topBar}>
         <Text style={styles.text}>Rocket SpaceX</Text>
         <Image
         style={styles.tinyLogo}
-        source={require('../assets/images/rocket.jpg')}
+        source={require('../assets/images/rocket-3.jpg')}
       />
       </View>
     );

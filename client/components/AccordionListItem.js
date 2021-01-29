@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       padding: '1rem',
       paddingLeft: '1.5rem',
-      borderTopWidth: 10,
+      borderTopWidth: 1,
       borderBottomWidth: 1,
       borderColor: 'white',
       backgroundColor:"#9f45b0",
@@ -33,14 +33,15 @@ const styles = StyleSheet.create({
       position: 'absolute',
       bottom: 0,
     },
-    text: {
+    title: {
       color: 'white',
       fontSize: 'large',
       fontFamily: 'fantasy',
+      marginLeft: '118px',
     },
     tinyLogo: {
-      width: 300,
-      height: 130,
+      width: 100,
+      height: 90,
       
     },
   });
@@ -86,9 +87,9 @@ const AccordionListItem = ({ title, children }) => {
         style={styles.tinyLogo}
         source={require('../assets/images/rocket-2.jpg')}
       />
-          <Text style={styles.text}>{title}</Text> 
+          <Text style={styles.title}>{title}</Text> 
           <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }}>
-            <MaterialIcons name="keyboard-arrow-down" size={20} color="black" />
+            <MaterialIcons name="keyboard-arrow-down" size={20} color="#FFE4F2" />
           </Animated.View>
         </View>
       </TouchableWithoutFeedback>
